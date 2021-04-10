@@ -1,0 +1,46 @@
+<script src=""></script>
+<h2>People Search Application - Nick Rader</h2>
+<div np-app="myApp" ng-controller="myCtrl">
+  <form>
+    <label for="searchbar">Search for People Here, then hit Search again to clear the query:</label>
+    <br /><br />
+    <input
+      name="searchbar"
+      type="text"
+      class="inputentry"
+      ng-model="search"
+      ng-change="updateValue()"
+      placeholder="Enter a name like 'Nick Rader'..."
+      required
+    />
+    <br /><br />
+    <input class="inputbutton" type="submit" value="Search" ng-click="queryBtn()">
+  </form>
+  <br />
+  <hr />
+  <div ng-show="clicked1" class="loadingio-spinner-spinner-qo90utpe1b">
+    <div class="ldio-7s7wqvwvho">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div ng-if="!results">
+    <h3>Error: No Matching Results</h3>
+  </div>
+  <div class="searchresults" ng-show="clicked" ng-repeat="result in results | filter: search">
+    <h4>{{result.name}}</h4>
+    <p>Address: {{result.address}}</p>
+    <p>Age: {{result.age}}</p>
+    <p>Interests: {{result.interests}}</p>
+  </div>
+</div>
